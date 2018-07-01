@@ -1,0 +1,46 @@
+ESEMPI QUERY
+
+-- tutti gli avvistamenti di un determinato anno
+select * 
+from sighting
+where country="us"
+and year(datetime)=1986
+order by datetime ASC
+
+-- anni presenti nel database, e numero di avvistamenti in ciascuno di essi
+select distinct YEAR(datetime) as anno, count(id) as cnt
+from sighting
+WHERE country="us"
+group by anno
+order by anno ASC
+
+-- stati che contengono almeno un avvistamento nell'anno
+SELECT DISTINCT state
+FROM sighting
+WHERE country='us'
+AND year(datetime)=1986
+order by state ASC
+
+-- verifica se tra due stati esiste una coppia di avvistamenti successivi
+-- cioè: determina se un determinato arco esiste o no
+select count(*) as c
+from sighting s1, sighting s2
+where year(s1.datetime)=year(s2.datetime)
+and year(s1.datetime)=1950
+and s1.country='us'
+and s2.country='us'
+and s1.state='ca'
+and s2.state='ny'
+and s2.datetime>s1.datetime
+
+-- determina tutte le coppie di stati tra cui esistono avvistamenti successivi
+-- cioè: elenca tutti gli archi del grafo
+select s1.state, s2.state, count(*)
+from sighting s1, sighting s2
+where year(s1.datetime)=year(s2.datetime)
+and year(s1.datetime)=1986
+and s1.country='us'
+and s2.country='us'
+and s2.datetime>s1.datetime
+and s1.state<>s2.state
+group by s1.state, s2.state

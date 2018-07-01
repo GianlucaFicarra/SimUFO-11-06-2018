@@ -1,0 +1,25 @@
+SCHEMA RICORSIONE:
+
+Soluzione completa = percorso nel grafo => sequenza di vertici (List <String>)
+                     non mi servono gli archi che sono univoci tanto grafo semplice
+                     in cui il primo vertice sia lo stato di partenza
+                     e non vi siano vertici ripetuti
+
+Soluzione parziale = percorso parziale a cui posso ancora aggiungere dei segmenti
+
+Condizione di terminazione = lo stato terminale della soluzione parziale non ha più 
+                             nessuno stato successore che non sia ancora stato 
+                             considerato nella sequenza, non riesco a generare nuove parziali
+
+OSS:
+Nella condizione di terminazione devo restituire UNA sola soluzione, 
+quella per cui .size() è massima, non mi fermo appena trovo una 
+condizione di terminazione ma voglio la più lunga
+
+Generazione di una nuova soluzione = trovare tutti i successori dello stato finale,
+                                     non ancora inseriti
+
+
+Livello della ricorsione = lunghezza del percorso parziale
+
+Caso iniziale (livello 1): [stato di partenza]

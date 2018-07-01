@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="ufo_sightings.erd" time="201806081557">
+	<entities>
+		<data-source id="mysql5-163dfaef264-627af9967a2ab817">
+			<entity id="1" name="sighting" fq-name="ufo_sightings.sighting" order="0" x="40" y="20">
+				<path name="ufo_sightings"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations/>
+	<notes/>
+</diagram>
